@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Zohair Khan — Portfolio
 
-## Getting Started
+Black-and-white editorial portfolio. Next.js (App Router) + Tailwind CSS v4 + Framer Motion.
+Type: Instrument Sans / Instrument Serif / Space Mono.
 
-First, run the development server:
+## Run it locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd portfolio
+npm install      # first time only
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Before you deploy — 3 quick edits
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Live demo URLs** — in `data/projects.js`, replace the two `REPLACE-ME-*.streamlit.app`
+   placeholders with your real Streamlit links (Medical Fraud System + ChurnAudit).
+2. **Resume** — drop your resume as `public/resume.pdf`. The nav "Resume" button links to it.
+3. **Flip "coming soon" projects live** — when *What Should I Play* / *Digital Twin* are deployed,
+   open `data/projects.js`, change that project's `status: "soon"` to `status: "live"`, and add a
+   `demo: "https://..."` line. That's the whole change — the card updates itself.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing content
 
-## Learn More
+- **Projects** → `data/projects.js` (single source of truth; `featured: true` = big case-study row, `false` = compact entry).
+- **Hero headline + intro** → `components/Hero.jsx`.
+- **Marquee metrics** → `components/Marquee.jsx`.
+- **Experience** → `components/Experience.jsx`.
+- **About text + skills lists** → `components/About.jsx`.
+- **Contact / footer** → `components/Contact.jsx`.
+- **Colors & fonts** → `app/globals.css` (`@theme` block) and `app/layout.js` (font imports).
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy to Vercel + connect your Porkbun domain
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push this folder to a GitHub repo.
+2. Go to vercel.com → New Project → import the repo → Deploy. You get a free `*.vercel.app` URL.
+3. In Vercel → Project → Settings → **Domains**, add your Porkbun domain. Vercel shows two records.
+4. In Porkbun → your domain → **DNS**, add:
+   - `A` record, host `@`, value `76.76.21.21`
+   - `CNAME` record, host `www`, value `cname.vercel-dns.com`
+5. Save. Vercel auto-issues HTTPS. Propagation: a few minutes to a couple hours.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Tip: don't buy the domain until you've settled on the name. The site runs fine on the
+> `*.vercel.app` URL in the meantime.
