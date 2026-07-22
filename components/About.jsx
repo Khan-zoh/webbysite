@@ -27,7 +27,7 @@ export default function About() {
               <p>
                 I&rsquo;m a junior at Texas A&amp;M studying Industrial
                 Engineering, with a CS minor and a Data Engineering
-                certificate. I graduate in May 2027.
+                certificate. I graduate in December 2027.
               </p>
               <p className="text-gray">
                 Most of my projects start the same way: a dataset too big to
