@@ -5,7 +5,7 @@ const roles = [
   {
     org: "Pfizer × Extern",
     role: "AI Document Intelligence Extern",
-    when: "Jun 2026 — present",
+    when: "May 2026 — present",
     body: "Summer externship building RAG tooling over pharma documentation, so answers come with the document they came from.",
   },
   {
