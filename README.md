@@ -1,6 +1,8 @@
 # Zohair Khan — Portfolio
 
-Black-and-white editorial portfolio. Next.js (App Router) + Tailwind CSS v4 + Framer Motion.
+Black-and-white editorial portfolio with a split-screen architecture — a sticky identity
+sidebar (name, scroll-spy nav, socials) beside scrolling content, projects as an interactive
+expanding index. Next.js (App Router) + Tailwind CSS v4 + Framer Motion.
 Type: Instrument Sans / Instrument Serif / Space Mono.
 
 ## Run it locally
@@ -11,24 +13,24 @@ npm install      # first time only
 npm run dev      # http://localhost:3000
 ```
 
-## Before you deploy — 3 quick edits
+## Before you deploy — quick edits
 
-1. **Live demo URLs** — in `data/projects.js`, replace the two `REPLACE-ME-*.streamlit.app`
-   placeholders with your real Streamlit links (Medical Fraud System + ChurnAudit).
-2. **Resume** — drop your resume as `public/resume.pdf`. The nav "Resume" button links to it.
-3. **Flip "coming soon" projects live** — when *What Should I Play* / *Digital Twin* are deployed,
-   open `data/projects.js`, change that project's `status: "soon"` to `status: "live"`, and add a
-   `demo: "https://..."` line. That's the whole change — the card updates itself.
+1. **Résumé** — drop your résumé as `public/resume.pdf`. The sidebar "Résumé" link points to it.
+2. **Flip in-progress projects live** — when a `status: "soon"` / `"private"` project is deployed,
+   open `data/projects.js`, set `status: "live"`, and add a `demo: "https://..."` line. The
+   project row updates itself.
 
 ## Editing content
 
-- **Projects** → `data/projects.js` (single source of truth; `featured: true` = big case-study row, `false` = compact entry).
-- **Hero headline + intro** → `components/Hero.jsx`.
-- **Marquee metrics** → `components/Marquee.jsx`.
-- **Experience** → `components/Experience.jsx`.
+- **Projects** → `data/projects.js` (single source of truth; `featured: true` = expanding index row, `false` = compact "More projects" entry).
+- **Name, tagline, sidebar nav, socials, "open to internships"** → `components/Sidebar.jsx`.
+- **Projects index (accordion + "More projects" list)** → `components/Work.jsx`.
 - **About text + skills lists** → `components/About.jsx`.
-- **Contact / footer** → `components/Contact.jsx`.
+- **Experience** → `components/Experience.jsx`.
+- **Marquee metrics band** → `components/Marquee.jsx`.
+- **Contact heading + footer** → `components/Contact.jsx`.
 - **Colors & fonts** → `app/globals.css` (`@theme` block) and `app/layout.js` (font imports).
+- **Page order / layout** → `app/page.js`.
 
 ## Deploy to Vercel + connect your Porkbun domain
 

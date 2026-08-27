@@ -17,7 +17,7 @@ export default function Marquee() {
           className="inline-flex items-center gap-10 pr-10 font-mono text-sm uppercase tracking-[0.14em]"
         >
           {t}
-          <span aria-hidden="true" className="text-faint">
+          <span aria-hidden="true" className="text-faint-dark">
             ·
           </span>
         </span>
@@ -27,9 +27,11 @@ export default function Marquee() {
 
   return (
     <div className="overflow-hidden border-y border-ink bg-ink py-4 text-paper">
-      <div className="marquee-track">
-        {row(false)}
-        {row(true)}
+      <div className="marquee-mask">
+        <div className="marquee-track">
+          {row(false)}
+          {row(true)}
+        </div>
       </div>
     </div>
   );

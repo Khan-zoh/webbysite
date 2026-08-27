@@ -9,9 +9,9 @@ const socials = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="mt-28 bg-ink px-6 pb-8 pt-20 text-paper">
+    <section id="contact" className="bg-ink px-6 pb-8 pt-24 text-paper">
       <div className="mx-auto max-w-7xl">
-        <SectionHeading index="05" title="Contact" dark />
+        <SectionHeading index="04" title="Contact" dark />
         <Reveal>
           <h2 className="font-semibold leading-[1.02] tracking-[-0.03em]">
             <span className="block text-[clamp(2.8rem,8.5vw,7rem)]">
@@ -23,7 +23,7 @@ export default function Contact() {
               </em>
             </span>
           </h2>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-faint">
+          <p className="mt-8 max-w-xl text-lg leading-relaxed text-faint-dark">
             I&rsquo;m looking for internships in data engineering and ML. If
             you have a role, a question, or feedback on any of these
             projects, email me. I answer.
@@ -37,7 +37,7 @@ export default function Contact() {
         </Reveal>
 
         <div className="mt-24 flex flex-wrap items-baseline justify-between gap-4 border-t border-line-dark pt-6">
-          <p className="label">© {new Date().getFullYear()} Zohair Khan</p>
+          <p className="label !text-faint-dark">© {new Date().getFullYear()} Zohair Khan</p>
           <div className="flex gap-6">
             {socials.map(([label, href]) => (
               <a
@@ -45,13 +45,13 @@ export default function Contact() {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="link-grow font-mono text-xs uppercase tracking-[0.14em] text-faint"
+                className="link-grow font-mono text-xs uppercase tracking-[0.14em] text-faint-dark"
               >
                 {label} ↗
               </a>
             ))}
           </div>
-          <p className="label">College Station, TX</p>
+          <p className="label !text-faint-dark">College Station, TX</p>
         </div>
       </div>
     </section>

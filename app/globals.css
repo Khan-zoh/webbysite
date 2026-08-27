@@ -7,7 +7,8 @@
   --color-paper: #fafaf8;   /* warm off-white page */
   --color-ink: #111110;     /* near-black text */
   --color-gray: #5f5f5a;    /* secondary text */
-  --color-faint: #a3a39c;   /* tertiary / metadata */
+  --color-faint: #6b6b64;   /* tertiary / metadata (~5:1 on paper — WCAG AA) */
+  --color-faint-dark: #8f8f88; /* tertiary / metadata on the dark section */
   --color-line: #e3e3dd;    /* hairline rules on paper */
   --color-line-dark: #2c2c2a; /* hairline rules on ink */
 
@@ -25,6 +26,15 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* guard full-bleed marquee; `clip` keeps sticky working */
+}
+
+/* balanced headlines, orphan-free paragraphs */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
 }
 
 /* faint print grain so the paper isn't sterile */
@@ -132,6 +142,12 @@ button:focus-visible {
 }
 .marquee-track:hover {
   animation-play-state: paused;
+}
+
+/* fade the scrolling text softly into the band's edges */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

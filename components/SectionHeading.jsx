@@ -10,7 +10,9 @@ export default function SectionHeading({ index, title, aside, dark = false }) {
       }`}
     >
       <h2 className="label !text-inherit">
-        <span className="text-faint">({index})</span>{" "}
+        <span className={dark ? "text-faint-dark" : "text-faint"}>
+          ({index})
+        </span>{" "}
         <span className={dark ? "text-paper" : "text-ink"}>{title}</span>
       </h2>
       {aside && <span className="label hidden sm:block">{aside}</span>}
