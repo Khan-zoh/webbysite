@@ -1,58 +1,27 @@
-import Reveal from "./Reveal";
-import SectionHeading from "./SectionHeading";
-
 const socials = [
   ["GitHub", "https://github.com/Khan-zoh"],
   ["LinkedIn", "https://linkedin.com/in/zohair-khan-2352672a5"],
-  ["Resume", "/resume.pdf"],
+  ["Request résumé", "mailto:khan.zoh25@gmail.com?subject=Resume%20request"],
 ];
 
 export default function Contact() {
   return (
-    <section id="contact" className="bg-ink px-6 pb-8 pt-24 text-paper">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading index="04" title="Contact" dark />
-        <Reveal>
-          <h2 className="font-semibold leading-[1.02] tracking-[-0.03em]">
-            <span className="block text-[clamp(2.8rem,8.5vw,7rem)]">
-              Got a data problem
-            </span>
-            <span className="block text-[clamp(2.8rem,8.5vw,7rem)]">
-              <em className="font-serif font-normal italic tracking-normal">
-                worth solving?
-              </em>
-            </span>
-          </h2>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-faint-dark">
-            I&rsquo;m looking for internships in data engineering and ML. If
-            you have a role, a question, or feedback on any of these
-            projects, email me. I answer.
-          </p>
-          <a
-            href="mailto:khan.zoh25@gmail.com"
-            className="link-fade mt-10 inline-block font-mono text-xl tracking-tight sm:text-3xl"
-          >
-            khan.zoh25@gmail.com
-          </a>
-        </Reveal>
-
-        <div className="mt-24 flex flex-wrap items-baseline justify-between gap-4 border-t border-line-dark pt-6">
-          <p className="label !text-faint-dark">© {new Date().getFullYear()} Zohair Khan</p>
-          <div className="flex gap-6">
-            {socials.map(([label, href]) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                className="link-grow font-mono text-xs uppercase tracking-[0.14em] text-faint-dark"
-              >
-                {label} ↗
-              </a>
-            ))}
-          </div>
-          <p className="label !text-faint-dark">College Station, TX</p>
+    <section id="contact" className="contact-section">
+      <div className="shell">
+        <div className="contact-top label"><span>04 / Start a conversation</span><span className="availability"><i aria-hidden="true" />Open to data internships</span></div>
+        <div className="contact-main">
+          <h2>Let’s make<br />something <em>useful.</em></h2>
+          <a href="mailto:khan.zoh25@gmail.com" className="contact-arrow" aria-label="Email Zohair Khan"><span aria-hidden="true">↗</span></a>
         </div>
+        <div className="contact-bottom">
+          <p>I’m looking for internships in data engineering and ML. Have a role in mind, a question, or a wonderfully messy dataset? I’d like to hear about it.</p>
+          <a href="mailto:khan.zoh25@gmail.com" className="contact-email link-fade">khan.zoh25@gmail.com</a>
+        </div>
+        <footer>
+          <p className="label">© {new Date().getFullYear()} Zohair Khan</p>
+          <div className="footer-links">{socials.map(([label, href]) => <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="link-grow">{label} ↗</a>)}</div>
+          <a href="#top" className="back-top">Back to top ↑</a>
+        </footer>
       </div>
     </section>
   );

@@ -1,152 +1,50 @@
-"use client";
-
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { projects } from "@/data/projects";
-import Reveal from "./Reveal";
+import ProjectArt from "./ProjectArt";
 import SectionHeading from "./SectionHeading";
 
-const statusLabel = {
-  live: "Live",
-  soon: "In development",
-  code: "Source",
-  private: "Private beta",
-};
+const statusLabel = { live: "Live", soon: "In development", code: "Source", private: "Private beta" };
 
-function ProjectRow({ p, i, isOpen, onToggle }) {
-  return (
-    <li className="border-b border-line">
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        className="group flex w-full items-baseline justify-between gap-4 py-6 text-left"
-      >
-        <span className="flex items-baseline gap-4">
-          <span className="font-mono text-xs text-faint">
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <span
-            className={`text-2xl font-semibold tracking-tight transition-colors sm:text-[1.75rem] ${
-              isOpen ? "text-ink" : "text-gray group-hover:text-ink"
-            }`}
-          >
-            {p.title}
-          </span>
-        </span>
-        <span className="flex shrink-0 items-center gap-4">
-          <span className="hidden font-mono text-[0.65rem] uppercase tracking-[0.14em] text-faint sm:inline">
-            {statusLabel[p.status]}
-          </span>
-          <span
-            className={`font-mono text-lg leading-none text-faint transition-transform duration-300 ${
-              isOpen ? "rotate-45 text-ink" : "group-hover:text-ink"
-            }`}
-            aria-hidden="true"
-          >
-            +
-          </span>
-        </span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="pb-8 sm:pl-8">
-              {p.meta && (
-                <p className="font-mono text-sm text-ink">{p.meta}</p>
-              )}
-              <p className="mt-3 max-w-xl leading-relaxed text-gray">
-                {p.description}
-              </p>
-              <p className="label mt-4">{p.tech.join(" · ")}</p>
-              <div className="mt-6 flex flex-wrap gap-6 font-mono text-xs uppercase tracking-[0.14em]">
-                {p.demo && (
-                  <a
-                    href={p.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="link-fade"
-                  >
-                    Live demo ↗
-                  </a>
-                )}
-                {p.code && (
-                  <a
-                    href={p.code}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="link-grow text-gray"
-                  >
-                    Source ↗
-                  </a>
-                )}
-                {!p.demo && !p.code && (
-                  <span className="text-faint">Private beta — demo on request</span>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </li>
-  );
+function ProjectLinks({ project }) {
+  return <div className="project-links">
+    {project.demo && <a className="link-fade" href={project.demo} target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">↗</span></a>}
+    {project.code && <a className="link-grow" href={project.code} target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a>}
+    {!project.demo && !project.code && <a className="link-fade" href="mailto:khan.zoh25@gmail.com?subject=Jarvis%20demo%20request">Private beta — demo on request <span aria-hidden="true">↗</span></a>}
+  </div>;
 }
 
 export default function Work() {
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
-  const [open, setOpen] = useState(featured[0]?.title ?? null);
-
   return (
-    <section id="work" className="pt-24">
-      <Reveal>
-        <SectionHeading index="02" title="Selected work" />
-      </Reveal>
-
-      <Reveal>
-        <ul className="border-t border-line">
-          {featured.map((p, i) => (
-            <ProjectRow
-              key={p.title}
-              p={p}
-              i={i}
-              isOpen={open === p.title}
-              onToggle={() => setOpen(open === p.title ? null : p.title)}
-            />
-          ))}
-        </ul>
-      </Reveal>
-
-      <Reveal>
-        <p className="label mb-2 mt-16">More projects</p>
-        <ul>
-          {rest.map((p) => (
-            <li
-              key={p.title}
-              className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line py-4"
-            >
-              <a
-                href={p.code}
-                target="_blank"
-                rel="noreferrer"
-                className="link-grow text-lg font-medium"
-              >
-                {p.title}
-              </a>
-              <span className="font-mono text-xs text-faint">
-                {p.tech.join(" · ")}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
+    <section id="work" className="work-section shell">
+      <SectionHeading index="01" title="Selected work" aside="A few things I’ve put together" />
+      <div className="section-intro"><h2>Built to answer<br /><em>real questions.</em></h2><p>Pipelines, models, and the space between.<br />Selected projects, 2025–2026.</p></div>
+      <div className="featured-projects">
+        {featured.map((p, i) => (
+          <article className={`project-spread project-${i + 1}`} key={p.title} aria-labelledby={`project-title-${i}`}>
+            <div className="project-visual">
+              <div className="project-visual-heading label"><span>Study / 0{i + 1}</span><span>{p.year}</span></div>
+              <ProjectArt index={i} />
+              <p className="project-metric">{p.meta}</p>
+              <span className="art-caption label">Concept sketch / {['Anomaly detection', 'Connected knowledge', 'Retention modeling', 'System simulation'][i]}</span>
+            </div>
+            <div className="project-copy">
+              <div className="project-overline label"><span>0{i + 1} / Project notes</span><span className="project-status"><i aria-hidden="true" />{statusLabel[p.status]}</span></div>
+              <h3 id={`project-title-${i}`}>{p.title}</h3>
+              <p className="project-description">{p.description}</p>
+              <ul className="tech-list" aria-label={`${p.title} technologies`}>{p.tech.map((t) => <li key={t}>{t}</li>)}</ul>
+              <ProjectLinks project={p} />
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="archive-heading"><h3>Also on the workbench<span aria-hidden="true">↙</span></h3><span className="label">04 more explorations</span></div>
+      <div className="project-archive">{rest.map((p, i) => (
+        <details key={p.title} className="archive-entry">
+          <summary><span className="archive-number label">0{i + 5}</span><h4>{p.title}</h4><span className="archive-tech label">{p.tech.join(" / ")}</span><span className="archive-toggle" aria-hidden="true">+</span></summary>
+          <div className="archive-content"><span className="label">{p.year} / {statusLabel[p.status]}</span><p>{p.description}</p><p className="archive-mobile-tech label">{p.tech.join(" / ")}</p><ProjectLinks project={p} /></div>
+        </details>
+      ))}</div>
     </section>
   );
 }

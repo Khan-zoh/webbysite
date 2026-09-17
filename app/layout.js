@@ -4,14 +4,14 @@ import Providers from "@/components/Providers";
 
 // Grotesque for headings and body copy.
 const instrumentSans = Instrument_Sans({
-  variable: "--font-sans",
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
 // Editorial serif, used sparingly for italic accent words.
 const instrumentSerif = Instrument_Serif({
-  variable: "--font-serif",
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
   weight: "400",
   style: ["normal", "italic"],
@@ -19,7 +19,7 @@ const instrumentSerif = Instrument_Serif({
 
 // Mono for labels, dates, and numbers.
 const spaceMono = Space_Mono({
-  variable: "--font-mono",
+  variable: "--font-space-mono",
   subsets: ["latin"],
   weight: ["400", "700"],
 });

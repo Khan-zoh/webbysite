@@ -1,4 +1,3 @@
-import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
 const roles = [
@@ -36,26 +35,25 @@ const roles = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="pt-24">
-      <Reveal>
-        <SectionHeading index="03" title="Experience" />
-      </Reveal>
-
-      <div>
-        {roles.map((r) => (
-          <Reveal key={r.org}>
-            <article className="border-t border-line py-8 first-of-type:border-t-0">
-              <p className="font-mono text-xs uppercase tracking-[0.14em] text-faint">
+    <section id="experience" className="experience-section shell">
+        <SectionHeading index="03" title="Experience" aside="Learning by doing" />
+      <div className="experience-grid">
+        <div className="experience-heading"><h2>Out of the notebook.<br /><em>Into the world.</em></h2><p>Teams I’ve contributed to,<br />and problems I’ve worked on.</p><a className="link-fade" href="mailto:khan.zoh25@gmail.com?subject=Resume%20request">Request résumé ↗</a></div>
+      <div className="roles">
+        {roles.map((r, i) => (
+            <article key={r.org} className="role">
+              <span className="role-index label" aria-hidden="true">0{i + 1}</span>
+              <p className="role-date label">
                 {r.when}
               </p>
-              <h3 className="mt-2 text-xl font-semibold tracking-tight">
+              <h3>
                 {r.org}
               </h3>
-              <p className="font-serif text-lg italic text-gray">{r.role}</p>
-              <p className="mt-3 max-w-xl leading-relaxed text-gray">{r.body}</p>
+              <p className="role-title">{r.role}</p>
+              <p className="role-body">{r.body}</p>
             </article>
-          </Reveal>
         ))}
+      </div>
       </div>
     </section>
   );

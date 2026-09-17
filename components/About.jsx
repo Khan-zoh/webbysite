@@ -1,4 +1,3 @@
-import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
 const stack = [
@@ -15,13 +14,12 @@ const stack = [
 
 export default function About() {
   return (
-    <section id="about" className="pt-24 lg:pt-0">
-      <Reveal>
-        <SectionHeading index="01" title="About" />
-      </Reveal>
-
-      <Reveal>
-        <div className="space-y-5 text-lg leading-relaxed">
+    <section id="about" className="about-section">
+      <div className="shell">
+        <SectionHeading index="02" title="A little about me" aside="The person behind the pipelines" />
+        <div className="about-grid">
+          <div className="about-heading"><h2>Curiosity first.<br /><em>Then, the code.</em></h2><div className="about-stamp" aria-hidden="true"><span>Texas A&amp;M</span><strong>’27</strong><span>Industrial Engineering</span></div></div>
+        <div className="about-copy">
           <p>
             I&rsquo;m a junior at Texas A&amp;M studying Industrial Engineering,
             with a CS minor and a Data Engineering certificate. I graduate in
@@ -39,20 +37,19 @@ export default function About() {
             and a supply-chain simulator I keep breaking on purpose.
           </p>
         </div>
-      </Reveal>
-
-      <Reveal>
-        <dl className="mt-10 space-y-4 border-t border-line pt-8">
+        </div>
+        <div className="skills-heading"><span className="label">The toolkit</span><p>What I work with.</p></div>
+        <dl className="skills-grid">
           {stack.map((g) => (
-            <div key={g.label} className="sm:flex sm:gap-8">
-              <dt className="label shrink-0 pt-1 sm:w-32">{g.label}</dt>
-              <dd className="mt-1 font-mono text-sm leading-relaxed text-gray sm:mt-0">
-                {g.items.join(", ")}
+            <div key={g.label}>
+              <dt className="label">{g.label}</dt>
+              <dd>
+                {g.items.map((item) => <span key={item}>{item}</span>)}
               </dd>
             </div>
           ))}
         </dl>
-      </Reveal>
+      </div>
     </section>
   );
 }

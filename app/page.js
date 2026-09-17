@@ -1,4 +1,5 @@
 import Sidebar from "@/components/Sidebar";
+import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Marquee from "@/components/Marquee";
 import Work from "@/components/Work";
@@ -8,16 +9,16 @@ import Contact from "@/components/Contact";
 export default function Home() {
   return (
     <>
-      <div className="mx-auto max-w-7xl px-6 lg:flex lg:gap-12 xl:gap-24">
-        <Sidebar />
-        <main className="pb-20 lg:min-w-0 lg:flex-1 lg:py-24">
-          <About />
-          <Work />
-          <Experience />
-        </main>
-      </div>
-      <Marquee />
-      <Contact />
+      <a href="#main" className="skip-link">Skip to content</a>
+      <Sidebar />
+      <main id="main">
+        <Hero />
+        <Work />
+        <About />
+        <Experience />
+        <Marquee />
+        <Contact />
+      </main>
     </>
   );
 }
