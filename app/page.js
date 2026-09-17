@@ -1,7 +1,6 @@
 import Sidebar from "@/components/Sidebar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Marquee from "@/components/Marquee";
 import Work from "@/components/Work";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
@@ -16,7 +15,6 @@ export default function Home() {
         <Work />
         <About />
         <Experience />
-        <Marquee />
         <Contact />
       </main>
     </>

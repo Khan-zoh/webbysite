@@ -20,7 +20,6 @@ Open http://localhost:3000. For a production check, run `npm run build`, then `n
 - `components/ProjectArt.jsx` contains decorative concept sketches, not charts of measured project data.
 - `components/About.jsx` contains the original biography and skills.
 - `components/Experience.jsx` contains the original experience entries.
-- `components/Marquee.jsx` presents the original six metrics as a readable static grid.
 - `components/Contact.jsx` contains the contact section and social links.
 - `app/globals.css` contains the palette, layout, responsive rules, and motion treatments. The original warm paper, ink, and gray colors are retained.
 - `app/layout.js` loads the original fonts and metadata.

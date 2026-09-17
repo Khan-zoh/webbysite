@@ -148,13 +148,6 @@ em { font-family: var(--font-serif), serif; font-weight: 400; }
 .role h3 { font-size: 24px; letter-spacing: -.025em; font-weight: 500; margin-bottom: 4px; }
 .role-title { font-family: var(--font-serif),serif; font-style: italic; font-size: 22px; color: var(--color-gray); }
 .role-body { margin-top: 17px; font-size: 14px; line-height: 1.85; color: var(--color-gray); }
-.numbers-section { border-top: 1px solid var(--color-ink); padding-block: 40px 85px; display: grid; grid-template-columns: .6fr 1.4fr; gap: 60px; }
-.numbers-heading h2 { font-size: 29px; letter-spacing: -.025em; line-height: 1.1; font-weight: 400; margin-bottom: 20px; }
-.numbers-heading .label { font-size: 8px; }
-.numbers-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 36px 25px; }
-.numbers-grid > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 7px; }
-.numbers-grid dt { font: 9px/1.7 var(--font-mono),monospace; color: var(--color-faint); }
-.numbers-grid dd { font-family: var(--font-serif),serif; font-size: 38px; line-height: 1; white-space: nowrap; }
 .contact-section { background: var(--color-ink); color: var(--color-paper); padding: 40px 0 24px; }
 .contact-section .label { color: var(--color-faint-dark); }
 .contact-top { display: flex; justify-content: space-between; gap: 20px; }
@@ -254,11 +247,6 @@ em { font-family: var(--font-serif), serif; font-weight: 400; }
   .experience-heading h2 { font-size: 43px; }
   .experience-heading > p { margin-block: 20px; }
   .roles { padding-left: 11px; }
-  .numbers-section { grid-template-columns: 1fr; padding-block: 30px 50px; gap: 30px; }
-  .numbers-heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-  .numbers-heading h2 { margin-bottom: 0; }
-  .numbers-grid { gap: 32px 18px; }
-  .numbers-grid dd { font-size: 33px; }
   .contact-section { padding-top: 30px; }
   .contact-top { font-size: 8px; }
   .contact-main { padding-block: 45px 30px; gap: 20px; }
@@ -301,9 +289,6 @@ em { font-family: var(--font-serif), serif; font-weight: 400; }
   .about-stamp span { font-size: 4.8px; }
   .experience-heading h2 { font-size: 38px; }
   .role h3 { font-size: 23px; }
-  .numbers-grid { grid-template-columns: repeat(2,1fr); gap: 30px; }
-  .numbers-grid dd { font-size: 38px; }
-  .numbers-heading .label { max-width: 105px; text-align: right; }
   .contact-top { flex-direction: column; gap: 10px; }
   .contact-main { position: relative; }
   .contact-main h2 { font-size: 12vw; }
